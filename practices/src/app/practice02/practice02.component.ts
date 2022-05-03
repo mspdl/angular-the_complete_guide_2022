@@ -7,8 +7,14 @@ import { Component } from '@angular/core';
 })
 export class Practice02Component {
   username = '';
+  buttonText = 'Insert a username';
 
   cleanUsername() {
     this.username = '';
+    this.updateUsername();
+  }
+
+  updateUsername() {
+    this.buttonText = this.username ? 'Clean username' : 'Cleaned username';
   }
 }
