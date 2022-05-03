@@ -1,1 +1,9 @@
-<p>{{ "Server" }} with ID {{ serverId }} is {{ getServerStatus() }}.</p>
+<p
+  [ngStyle]="{
+    backgroundColor: getBackgroundColor(),
+    borderColor: getBorderColor()
+  }"
+>
+  {{ "Server" }} with ID {{ serverId | number: "2.0-0" }} is
+  {{ getServerStatus() }}.
+</p>
