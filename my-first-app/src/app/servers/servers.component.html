@@ -1,10 +1,12 @@
 <label>Server Name</label>
 <input type="text" class="form-control" (input)="onUpdateServerName($event)" />
 <p>Server Name: {{ serverName }}</p>
+
 <hr />
 <label>Server Location</label>
 <input type="text" class="form-control" [(ngModel)]="serverLocation" />
 <p>Server Location: {{ serverLocation }}</p>
+
 <hr />
 <button
   class="btn btn-primary"
@@ -13,18 +15,26 @@
 >
   Add Server
 </button>
-<hr *ngIf="serverCreated" />
-<p *ngIf="serverCreated">Server was created, server name is {{ serverName }}</p>
+
+<div *ngIf="serverCreated; else noServer">
+  <hr />
+  <p>Server was created, server name is {{ serverName }}</p>
+</div>
+
+<ng-template #noServer>
+  <hr />
+  <p>No server was created</p>
+</ng-template>
+
 <hr />
 <p>{{ serverCreationStatus }}</p>
 
+<hr />
 <app-server></app-server>
 <app-server></app-server>
 
 <hr />
-
 <!-- Property Binding -->
 <p [innerText]="allowNewServer"></p>
-
 <!-- String Interpolation -->
 <p>{{ allowNewServer }}</p>
