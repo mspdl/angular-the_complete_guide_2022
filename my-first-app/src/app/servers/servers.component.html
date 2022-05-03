@@ -13,6 +13,8 @@
 >
   Add Server
 </button>
+<hr *ngIf="serverCreated" />
+<p *ngIf="serverCreated">Server was created, server name is {{ serverName }}</p>
 <hr />
 <p>{{ serverCreationStatus }}</p>
 
