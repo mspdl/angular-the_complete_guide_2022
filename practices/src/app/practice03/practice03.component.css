@@ -1,0 +1,9 @@
+.whiteColor {
+    color: white;
+}
+
+.logs p {
+    padding: 0.5rem;
+    border: 1px solid blue;
+    border-radius: 0.2rem;
+}

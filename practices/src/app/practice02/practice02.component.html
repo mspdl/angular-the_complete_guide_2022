@@ -1,7 +1,6 @@
 <div class="container">
-    <h1>Form - Practice 02</h1>
   <label>Username</label>
-  <br>
+  <br />
   <input type="text" [(ngModel)]="username" (input)="updateUsername()" />
   <p>{{ username }}</p>
   <button [disabled]="!username" (click)="cleanUsername()">

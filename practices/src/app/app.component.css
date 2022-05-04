@@ -1,0 +1,13 @@
+.container {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin: 40px;
+}
+
+label {
+  font-weight: bold;
+}
+
+button, input {
+    padding: 10px;
+}
