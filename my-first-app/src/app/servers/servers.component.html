@@ -30,9 +30,7 @@
 <p>{{ serverCreationStatus }}</p>
 
 <hr />
-<app-server></app-server>
-<app-server></app-server>
-
+<app-server *ngFor="let server of servers"></app-server>
 <hr />
 <!-- Property Binding -->
 <p [innerText]="allowNewServer"></p>
