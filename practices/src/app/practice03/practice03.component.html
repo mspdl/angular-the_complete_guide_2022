@@ -1,9 +1,12 @@
-<button (click)="changeDisplay()">Display Details</button>
+<button (click)="changeMessageDisplay()">Display Details</button>
 <p *ngIf="showSecretMessage">Secret Password = tuna</p>
 <hr />
 <div class="logs">
-  <p *ngFor="let log of logs; let i = index"
-  [ngStyle]="{backgroundColor:getBackgroundColor(i)}"
-  [ngClass]="{whiteColor: isIndexGreaterThanOrEqualToFive(i)}"
-  >{{ log }}</p>
+  <p
+    *ngFor="let log of logs; let i = 'index + 1'"
+    [ngStyle]="{ backgroundColor: getBackgroundColor(i) }"
+    [ngClass]="{ 'white-text': isIndexGreaterThanOrEqualToFive(i) }"
+  >
+    {{ log }}
+  </p>
 </div>

@@ -12,7 +12,7 @@ export class Practice03Component {
 
   constructor(public datepipe: DatePipe) {}
 
-  changeDisplay() {
+  changeMessageDisplay() {
     this.showSecretMessage = !this.showSecretMessage;
     const message = this.showSecretMessage
       ? 'Showed message at '
@@ -23,8 +23,7 @@ export class Practice03Component {
   }
 
   isIndexGreaterThanOrEqualToFive(index) {
-    const fixedIndex = index + 1;
-    return fixedIndex >= 5 ? true : false;
+    return index >= 5 ? true : false;
   }
 
   getBackgroundColor(index) {
