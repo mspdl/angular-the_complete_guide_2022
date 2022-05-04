@@ -1,0 +1,11 @@
+p {
+  padding: 2rem;
+  border-radius: 0.6rem;
+  font-weight: bold;
+  color: #444;
+  border: 0.2rem solid;
+}
+
+.offline {
+  color: black;
+}

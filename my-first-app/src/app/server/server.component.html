@@ -3,6 +3,7 @@
     backgroundColor: getBackgroundColor(),
     borderColor: getBorderColor()
   }"
+  [ngClass]="{ offline: !isServerOnline() }"
 >
   {{ "Server" }} with ID {{ serverId | number: "2.0-0" }} is
   {{ getServerStatus() }}.

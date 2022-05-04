@@ -3,17 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-server',
   templateUrl: './server.component.html',
-  styles: [
-    `
-      p {
-        padding: 2rem;
-        border-radius: 0.6rem;
-        font-weight: bold;
-        color: #444;
-        border: 0.2rem solid;
-      }
-    `,
-  ],
+  styleUrls: ['./server.component.css'],
 })
 export class ServerComponent {
   serverId = Math.random() * 100;
@@ -28,10 +18,14 @@ export class ServerComponent {
   }
 
   getBackgroundColor() {
-    return this.serverStatus === 'offline' ? 'peachpuff' : '#B4FF9F';
+    return this.isServerOnline() ? '#B4FF9F' : 'peachpuff';
   }
 
   getBorderColor() {
-    return this.serverStatus === 'offline' ? 'red' : 'green';
+    return this.isServerOnline() ? 'green' : 'red';
+  }
+
+  isServerOnline() {
+    return this.serverStatus === 'online' ? true : false;
   }
 }
