@@ -7,5 +7,5 @@ import { serverElement } from "../shared/server-element.model";
   styleUrls: ["./server-element.component.css"],
 })
 export class ServerElementComponent {
-  @Input() element: serverElement;
+  @Input('srvElement') element: serverElement;
 }
