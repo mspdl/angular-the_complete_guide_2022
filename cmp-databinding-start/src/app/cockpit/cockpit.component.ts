@@ -10,18 +10,18 @@ export class CockpitComponent {
   newServerContent = "A Server Content Example";
   
   onAddServer() {
-    this.serverElements.push({
-      type: "server",
-      name: this.newServerName,
-      content: this.newServerContent,
-    });
+    // this.serverElements.push({
+    //   type: "server",
+    //   name: this.newServerName,
+    //   content: this.newServerContent,
+    // });
   }
 
   onAddBlueprint() {
-    this.serverElements.push({
-      type: "blueprint",
-      name: this.newServerName,
-      content: this.newServerContent,
-    });
+    // this.serverElements.push({
+    //   type: "blueprint",
+    //   name: this.newServerName,
+    //   content: this.newServerContent,
+    // });
   }
 }
