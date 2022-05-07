@@ -12,15 +12,15 @@
     <input
       type="text"
       class="form-control"
+      #newContent
       placeholder="Insert a server content"
-      [(ngModel)]="newContent"
     />
     <br />
     <div class="btn-toolbar">
-      <button class="btn btn-primary" (click)="onAddServer(newName)">
+      <button class="btn btn-primary" (click)="onAddServer(newContent)">
         Add Server
       </button>
-      <button class="btn btn-primary" (click)="onAddBlueprint(newName)">
+      <button class="btn btn-primary" (click)="onAddBlueprint(newContent)">
         Add Server Blueprint
       </button>
     </div>
