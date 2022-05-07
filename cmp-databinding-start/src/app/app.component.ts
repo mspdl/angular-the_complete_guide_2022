@@ -1,10 +1,11 @@
-import { Component } from "@angular/core";
+import { Component, ViewEncapsulation } from "@angular/core";
 import { serverElement } from "./shared/server-element.model";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
   serverElements: serverElement[] = [
@@ -19,7 +20,10 @@ export class AppComponent {
     });
   }
 
-  onBlueprintAdded(blueprintData: { blueprintName: string; blueprintContent: string }) {
+  onBlueprintAdded(blueprintData: {
+    blueprintName: string;
+    blueprintContent: string;
+  }) {
     this.serverElements.push({
       type: "blueprint",
       name: blueprintData.blueprintName,
