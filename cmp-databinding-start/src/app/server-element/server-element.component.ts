@@ -1,4 +1,16 @@
-import { Component, Input } from "@angular/core";
+import {
+  AfterContentChecked,
+  AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  DoCheck,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from "@angular/core";
 import { serverElement } from "../shared/server-element.model";
 
 @Component({
@@ -6,6 +18,54 @@ import { serverElement } from "../shared/server-element.model";
   templateUrl: "./server-element.component.html",
   styleUrls: ["./server-element.component.css"],
 })
-export class ServerElementComponent {
-  @Input('srvElement') element: serverElement;
+export class ServerElementComponent
+  implements
+    OnInit,
+    OnChanges,
+    DoCheck,
+    AfterContentInit,
+    AfterContentChecked,
+    AfterViewInit,
+    AfterViewChecked,
+    OnDestroy
+{
+  @Input("srvElement") element: serverElement;
+  @Input() name: string;
+
+  constructor() {
+    console.log("constructor called!");
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("ngOnChanges called!");
+    console.log(changes);
+  }
+
+  ngOnInit() {
+    console.log("ngOnInit called!");
+  }
+
+  ngDoCheck() {
+    console.log("ngDoCheck called!");
+  }
+
+  ngAfterContentInit() {
+    console.log("ngAfterContentInit called!");
+  }
+
+  ngAfterContentChecked() {
+    console.log("ngAfterContentChecked called!");
+  }
+
+  ngAfterViewInit() {
+    console.log("ngAfterViewInit called!");
+  }
+
+  ngAfterViewChecked() {
+    console.log("ngAfterViewChecked called!");
+  }
+
+  ngOnDestroy() {
+    console.log("ngOnDestroy called!");
+  }
 }

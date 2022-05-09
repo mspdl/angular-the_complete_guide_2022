@@ -30,4 +30,13 @@ export class AppComponent {
       content: blueprintData.blueprintContent,
     });
   }
+
+  onChangeFirst() {
+    const randomNumber = Math.ceil(Math.random() * 10);
+    this.serverElements[0].name = "Changed to " + randomNumber;
+  }
+
+  onDestroyFirst() {
+    this.serverElements.splice(0, 1);
+  }
 }
