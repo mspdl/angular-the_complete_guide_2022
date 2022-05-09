@@ -11,3 +11,7 @@ label {
 button, input {
     padding: 10px;
 }
+
+button {
+  cursor: pointer;
+}

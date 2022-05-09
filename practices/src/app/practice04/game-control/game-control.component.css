@@ -1,0 +1,22 @@
+button {
+  margin: 1rem;
+  font-size: 5rem;
+  padding: 1rem;
+  color: white;
+  border-radius: 0.5rem;
+}
+
+.start {
+  background-color: #0069d9;
+}
+
+.stop {
+  background-color: #c82333;
+}
+
+button[disabled] {
+  border: 1px solid #999;
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}

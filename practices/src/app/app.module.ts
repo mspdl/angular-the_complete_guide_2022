@@ -8,6 +8,10 @@ import { SuccessAlertComponent } from './practice01/success-alert/success-alert.
 import { WarningAlertComponent } from './practice01/warning-alert/warning-alert.component';
 import { Practice02Component } from './practice02/practice02.component';
 import { Practice03Component } from './practice03/practice03.component';
+import { EvenComponent } from './practice04/even/even.component';
+import { GameControlComponent } from './practice04/game-control/game-control.component';
+import { OddComponent } from './practice04/odd/odd.component';
+import { Practice04Component } from './practice04/practice04.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +21,10 @@ import { Practice03Component } from './practice03/practice03.component';
     Practice01Component,
     Practice02Component,
     Practice03Component,
+    Practice04Component,
+    GameControlComponent,
+    OddComponent,
+    EvenComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [DatePipe],

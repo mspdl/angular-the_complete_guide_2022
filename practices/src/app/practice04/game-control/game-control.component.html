@@ -1,0 +1,13 @@
+<h2>Game Control</h2>
+<p>{{ gameStatus }}</p>
+<div class="buttons">
+  <button class="start" (click)="startGame()" [disabled]="gameStarted">
+    Start
+  </button>
+  <button class="stop" (click)="stopGame()" [disabled]="!gameStarted">
+    Pause
+  </button>
+  <button class="stop" (click)="cleanGame()" [disabled]="!gameStarted">
+    Clean
+  </button>
+</div>
