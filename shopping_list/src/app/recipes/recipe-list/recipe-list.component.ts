@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Recipe } from '../recipe.model';
 
 @Component({
@@ -7,6 +7,8 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./recipe-list.component.css'],
 })
 export class RecipeListComponent {
+  @Output() updateSelectedRecipeEmitter = new EventEmitter<Recipe>();
+
   recipes: Recipe[] = [
     new Recipe(
       'Ratatouille',
@@ -19,4 +21,8 @@ export class RecipeListComponent {
       'https://www.recipetineats.com/wp-content/uploads/2020/08/My-best-Vanilla-Cake_9.jpg'
     ),
   ];
+
+  updateSelectedRecipe(recipe: Recipe) {
+    this.updateSelectedRecipeEmitter.emit(recipe)
+  }
 }
