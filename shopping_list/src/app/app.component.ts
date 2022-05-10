@@ -6,16 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  showRecipeList = true;
-  showShoppingList = false;
+  loadedFeature = 'recipe';
 
-  showTheRecipeList() {
-    this.showRecipeList = true;
-    this.showShoppingList = false;
-  }
-
-  showTheShoppingList() {
-    this.showRecipeList = false;
-    this.showShoppingList = true;
+  onNavigate(feature: string) {
+    this.loadedFeature = feature;
   }
 }
