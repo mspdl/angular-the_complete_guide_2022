@@ -2,8 +2,24 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-recipes></app-recipes>
-      <app-shopping-list></app-shopping-list>
+      <div class="btn-toolbar">
+        <button
+          class="btn btn-primary"
+          (click)="showTheRecipeList()"
+          [disabled]="showRecipeList"
+        >
+          Show Recipe List
+        </button>
+        <button
+          class="btn btn-primary"
+          (click)="showTheShoppingList()"
+          [disabled]="showShoppingList"
+        >
+          Show Shopping List
+        </button>
+      </div>
+      <app-recipes *ngIf="showRecipeList"></app-recipes>
+      <app-shopping-list *ngIf="showShoppingList"></app-shopping-list>
     </div>
   </div>
 </div>
