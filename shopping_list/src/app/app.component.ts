@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationPagesEnum } from './shared/navigation-pages.enum';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  loadedFeature = 'recipe';
+  navigationPagesEnum = NavigationPagesEnum;
+  loadedFeature: string = this.navigationPagesEnum.recipe;
 
   onNavigate(feature: string) {
     this.loadedFeature = feature;

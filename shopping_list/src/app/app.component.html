@@ -2,9 +2,11 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-recipes *ngIf="loadedFeature === 'recipe'"></app-recipes>
+      <app-recipes
+        *ngIf="loadedFeature === navigationPagesEnum.recipe"
+      ></app-recipes>
       <app-shopping-list
-        *ngIf="loadedFeature === 'shopping-item'"
+        *ngIf="loadedFeature === navigationPagesEnum.shoppingList"
       ></app-shopping-list>
     </div>
   </div>
