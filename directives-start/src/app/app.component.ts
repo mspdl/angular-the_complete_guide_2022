@@ -10,4 +10,26 @@ export class AppComponent {
   oddNumbers = [1, 3, 5];
   evenNumbers = [2, 4];
   onlyOdd = false;
+
+  defaultColors = {
+    odd: {
+      background: "orange",
+      text: "brown",
+    },
+    even: {
+      background: "aqua",
+      text: "mediumblue",
+    },
+  };
+
+  highlightColors = {
+    odd: {
+      background: "brown",
+      text: "orange",
+    },
+    even: {
+      background: "mediumblue",
+      text: "aqua",
+    },
+  };
 }

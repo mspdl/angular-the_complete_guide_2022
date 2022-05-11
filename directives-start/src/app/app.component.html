@@ -12,7 +12,10 @@
             class="list-group-item"
             [ngClass]="{ odd: oddNumber % 2 !== 0 }"
             [ngStyle]="{
-              backgroundColor: oddNumber % 2 !== 0 ? 'orange' : 'transparent'
+              backgroundColor:
+                oddNumber % 2 !== 0
+                  ? defaultColors.odd.background
+                  : 'transparent'
             }"
           >
             {{ oddNumber }}
@@ -26,7 +29,10 @@
             class="list-group-item"
             [ngClass]="{ even: evenNumber % 2 === 0 }"
             [ngStyle]="{
-              backgroundColor: evenNumber % 2 === 0 ? 'aqua' : 'transparent'
+              backgroundColor:
+                evenNumber % 2 === 0
+                  ? defaultColors.even.background
+                  : 'transparent'
             }"
           >
             {{ evenNumber }}
@@ -34,7 +40,12 @@
         </div>
       </ul>
       <p appBasicHighlight>Style me with basic directive!</p>
-      <p appBetterHighlight>Style me with better directive!</p>
+      <p
+        [appBetterHighlight]="onlyOdd ? defaultColors.odd : defaultColors.even"
+        [highlightColor]="onlyOdd ? highlightColors.odd : highlightColors.even"
+      >
+        Style me with better directive!
+      </p>
     </div>
   </div>
 </div>
