@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { Recipe } from './recipe.model';
+import { RecipeService } from './recipe.services';
 
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.css'],
+  providers: [RecipeService],
 })
 export class RecipesComponent {
   selectedRecipe: Recipe;
-  
+
   updateSelectedRecipe(recipe: Recipe) {
     this.selectedRecipe = recipe;
   }
