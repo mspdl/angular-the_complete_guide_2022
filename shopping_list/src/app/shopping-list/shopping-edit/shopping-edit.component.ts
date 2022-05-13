@@ -6,7 +6,6 @@ import { ShoppingListService } from '../shopping-list.service';
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
   styleUrls: ['./shopping-edit.component.css'],
-  providers: [ShoppingListService],
 })
 export class ShoppingEditComponent {
   @ViewChild('nameInput') nameInputRef: ElementRef;
