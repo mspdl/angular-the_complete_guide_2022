@@ -15,12 +15,21 @@ export class ShoppingListService {
   }
 
   addIngredient(newIngredient: Ingredient) {
-    this.ingredients.push(newIngredient);
+    const idFound = this.ingredients.findIndex(
+      (ing) => ing.name === newIngredient.name
+    );
+    if (idFound >= 0) {
+      this.ingredients[idFound].amount += Number(newIngredient.amount);
+    } else {
+      this.ingredients.push(newIngredient);
+    }
     this.ingredientsChanged.emit(this.ingredients.slice());
   }
 
   addIngredients(ingredients: Ingredient[]) {
-    this.ingredients.push(...ingredients);
+    ingredients.forEach((ingredient) => {
+      this.addIngredient(ingredient);
+    });
     this.ingredientsChanged.emit(this.ingredients.slice());
   }
 }
