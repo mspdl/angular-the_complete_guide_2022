@@ -21,6 +21,10 @@ const appRoutes: Routes = [
     component: UsersComponent,
   },
   {
+    path: "users/:id",
+    component: UserComponent,
+  },
+  {
     path: "servers",
     component: ServersComponent,
   },
