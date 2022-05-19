@@ -13,7 +13,7 @@ import { UserComponent } from "./users/user/user.component";
 import { UsersComponent } from "./users/users.component";
 
 const appRoutes: Routes = [
-  { path: "", component: HomeComponent },
+  { path: "", component: HomeComponent, pathMatch: "full" },
   {
     path: "users",
     component: UsersComponent,
