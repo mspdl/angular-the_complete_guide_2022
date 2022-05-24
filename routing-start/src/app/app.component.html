@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <ul class="nav nav-tabs">
+      <ul class="nav nav-tabs" style="display: flex">
         <li
           role="presentation"
           routerLinkActive="active"
@@ -14,6 +14,26 @@
         </li>
         <li role="presentation" routerLinkActive="active">
           <a [routerLink]="'users'">Users</a>
+        </li>
+        <li style="margin-left: auto">
+          <p *ngIf="currentUser">Welcome, {{ currentUser }}!</p>
+          <p *ngIf="!currentUser">Please log in.</p>
+        </li>
+        <li style="margin-left: auto">
+          <button
+            *ngIf="!currentUser"
+            class="btn btn-default"
+            (click)="onLogin()"
+          >
+            Login
+          </button>
+          <button
+            *ngIf="currentUser"
+            class="btn btn-default"
+            (click)="onLogout()"
+          >
+            Logout
+          </button>
         </li>
       </ul>
     </div>
