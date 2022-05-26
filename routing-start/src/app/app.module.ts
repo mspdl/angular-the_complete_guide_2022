@@ -14,6 +14,7 @@ import { ServersComponent } from "./servers/servers.component";
 import { ServersService } from "./servers/servers.service";
 import { UserComponent } from "./users/user/user.component";
 import { UsersComponent } from "./users/users.component";
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { UsersComponent } from "./users/users.component";
     EditServerComponent,
     ServerComponent,
     PageNotFoundComponent,
+    ErrorPageComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [ServersService, AuthGuard, AuthService, CanDeactivateGuard],
