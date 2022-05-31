@@ -60,6 +60,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 5555
+          },
           "configurations": {
             "production": {
               "browserTarget": "shopping_list:build:production"
