@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { NavigationPagesEnum } from '../shared/navigation-pages.enum';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +6,5 @@ import { NavigationPagesEnum } from '../shared/navigation-pages.enum';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  @Output() featureSelected = new EventEmitter<string>();
   collapsed = true;
-  navigationPagesEnum = NavigationPagesEnum;
-
-  onSelect(selection: string) {
-    this.featureSelected.emit(selection);
-  }
 }
