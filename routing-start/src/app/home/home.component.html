@@ -3,10 +3,3 @@
 <button class="btn btn-primary" (click)="onLoadServer(1)">
   Go to Server 1
 </button>
-<hr />
-<button *ngIf="!currentUser" class="btn btn-default" (click)="onLogin()">
-  Login
-</button>
-<button *ngIf="currentUser" class="btn btn-default" (click)="onLogout()">
-  Logout
-</button>
