@@ -16,7 +16,7 @@ export class ShoppingListService {
 
   addIngredient(newIngredient: Ingredient) {
     const idFound = this.ingredients.findIndex(
-      (ing) => ing.name === newIngredient.name
+      (ing) => ing.name.toLowerCase() === newIngredient.name.toLowerCase()
     );
     if (idFound >= 0) {
       this.ingredients[idFound].amount += Number(newIngredient.amount);
