@@ -1,1 +1,2 @@
-<p>recipe-edit works!</p>
+<p *ngIf="!editMode">This is a new recipe</p>
+<p *ngIf="editMode">Id of the recipe: {{ id }}</p>
