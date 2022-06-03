@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-12">
-    <button class="btn btn-success">New Recipe</button>
+    <button class="btn btn-success" (click)="onNewRecipe()">New Recipe</button>
   </div>
 </div>
 <hr />
@@ -11,8 +11,6 @@
       [recipeItem]="recipe"
       [id]="id"
     ></app-recipe-item>
-    <hr
-      class="separator"
-    />
+    <hr class="separator" />
   </div>
 </div>
