@@ -15,5 +15,6 @@ export class AppComponent {
 
   onSubmit() {
     console.log("Submitted!", this.signupForm);
+    console.log("Is this form valid?", this.signupForm.valid ? "yes" : "no");
   }
 }
