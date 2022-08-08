@@ -12,6 +12,22 @@ export class AppComponent {
   answer = "";
   genders = ["male", "female"];
 
+  suggestUserName() {
+    const suggestUserName = "Superuser";
+    // this.signupForm.setValue({
+    //   userData: {
+    //     username: suggestUserName,
+    //     email: "",
+    //   },
+    //   secret: "pet",
+    //   questionAnswer: "",
+    //   gender: "male",
+    // });
+    this.signupForm.form.patchValue({
+      userData: { username: suggestUserName },
+    });
+  }
+
   // onSubmit(form: NgForm) {
   //   console.log("Submitted!", form);
   // }
