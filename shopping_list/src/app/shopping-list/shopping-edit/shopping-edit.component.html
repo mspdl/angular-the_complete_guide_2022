@@ -37,7 +37,7 @@
               {{ editMode ? "Update " : "Add" }}
             </button>
             <button class="btn btn-danger" type="button">Delete</button>
-            <button class="btn btn-primary" type="button" (click)="clear()">
+            <button class="btn btn-primary" type="button" (click)="clear()" [disabled]="!f.value.amount && !f.value.name">
               Clear
             </button>
           </div>
