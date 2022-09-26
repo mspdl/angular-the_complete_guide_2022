@@ -16,6 +16,10 @@ export class ShoppingListService {
     return this.ingredients.slice();
   }
 
+  getIndredient(index: number) {
+    return this.ingredients[index];
+  }
+
   addIngredient(newIngredient: Ingredient) {
     const idFound = this.ingredients.findIndex(
       (ing) => ing.name.toLowerCase() === newIngredient.name.toLowerCase()
