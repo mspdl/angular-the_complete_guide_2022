@@ -1,5 +1,7 @@
 .btn-toolbar {
   padding: 20px 0;
+  display: flex;
+  align-items: flex-end;
 }
 
 .btn-toolbar button {
@@ -7,5 +9,9 @@
 }
 
 .ingredient-row {
-  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+hr {
+  margin: 10px 0;
 }
