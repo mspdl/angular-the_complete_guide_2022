@@ -5,3 +5,7 @@
 .btn-toolbar button {
   margin: 0 5px;
 }
+
+.ingredient-row {
+  padding-bottom: 5px;
+}
