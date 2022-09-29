@@ -23,13 +23,18 @@
               id="imagePath"
               formControlName="imagePath"
               class="form-control"
+              #imagePath
             />
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <img [src]="recipeForm.value.imagePath" class="img-responsive" />
+          <img
+            [src]="imagePath.value"
+            class="img-responsive"
+            style="max-width: 20vw"
+          />
         </div>
       </div>
       <div class="row">
@@ -82,8 +87,16 @@
         </div>
       </div>
       <div class="btn-toolbar">
-        <button type="submit" class="btn btn-success" [disabled]="!recipeForm.valid">Save</button>
-        <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+        <button
+          type="submit"
+          class="btn btn-success"
+          [disabled]="!recipeForm.valid"
+        >
+          Save
+        </button>
+        <button type="button" class="btn btn-danger" (click)="onCancel()">
+          Cancel
+        </button>
       </div>
     </form>
   </div>
