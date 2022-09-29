@@ -1,11 +1,14 @@
 .btn-toolbar {
-  padding: 20px 0;
-  display: flex;
-  justify-content: flex-end;
+  padding: 0 20px 20px;
 }
 
 .btn-toolbar button {
   margin: 0 5px;
+}
+
+.submit-buttons {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .ingredient-row {
