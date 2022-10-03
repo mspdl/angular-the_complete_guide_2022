@@ -3,9 +3,10 @@ import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import { ShortenPipe } from "./short.pipe";
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
-  declarations: [AppComponent, ShortenPipe],
+  declarations: [AppComponent, ShortenPipe, FilterPipe],
   imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
