@@ -12,7 +12,9 @@
       <ul class="list-group">
         <li
           class="list-group-item"
-          *ngFor="let server of servers | filter: filteredStatus:'status'"
+          *ngFor="
+            let server of servers | filter: filteredStatus:'status' | sort:'name'
+          "
           [ngClass]="getStatusClasses(server)"
         >
           <span class="badge">
@@ -25,5 +27,6 @@
       </ul>
     </div>
   </div>
+  <h3>Reserve phrase</h3>
   <h3>{{ "Reverse phrase" | reverse }}</h3>
 </div>
