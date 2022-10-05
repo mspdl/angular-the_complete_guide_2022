@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { map } from "rxjs/operators";
 import { Post } from "./post.model";
 import { PostsService } from "./posts.service";
 
@@ -15,7 +14,11 @@ export class AppComponent implements OnInit {
   constructor(private postsService: PostsService) {}
 
   ngOnInit(): void {
-    this.postsService.fetchPosts();
+    this.isLoading = true;
+    this.postsService.fetchPosts().subscribe((posts) => {
+      this.isLoading = false;
+      this.loadedPosts = posts;
+    });
   }
 
   onCreatePost(postData: Post) {
@@ -23,7 +26,11 @@ export class AppComponent implements OnInit {
   }
 
   onFetchPosts() {
-    this.postsService.fetchPosts();
+    this.isLoading = true;
+    this.postsService.fetchPosts().subscribe((posts) => {
+      this.isLoading = false;
+      this.loadedPosts = posts;
+    });
   }
 
   onClearPosts() {
