@@ -9,3 +9,13 @@
 .action-buttons button {
   margin-right: 10px;
 }
+
+.post-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-button {
+  max-height: 50px;
+}

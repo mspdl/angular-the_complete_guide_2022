@@ -40,4 +40,12 @@ export class AppComponent implements OnInit {
       this.loadedPosts = [];
     });
   }
+
+  onDeletePost(id: string) {
+    this.isLoading = true;
+    this.postsService.deletePost(id).subscribe(() => {
+      this.isLoading = false;
+      this.loadedPosts = this.loadedPosts.filter((post) => post.id !== id);
+    });
+  }
 }

@@ -52,9 +52,17 @@
     <div class="col-xs-12 col-md-6 col-md-offset-3">
       <div *ngIf="!isLoading; else is_loading">
         <ul *ngIf="loadedPosts.length > 0; else no_posts" class="list-group">
-          <li *ngFor="let post of loadedPosts" class="list-group-item">
-            <h3>{{ post.title }}</h3>
-            <p>{{ post.content }}</p>
+          <li
+            *ngFor="let post of loadedPosts"
+            class="list-group-item post-item"
+          >
+            <div>
+              <h3>{{ post.title }}</h3>
+              <p>{{ post.content }}</p>
+            </div>
+            <button class="btn btn-danger delete-button" (click)="onDeletePost(post.id)">
+              Delete
+            </button>
           </li>
         </ul>
         <ng-template #no_posts>

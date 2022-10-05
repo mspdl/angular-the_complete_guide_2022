@@ -36,6 +36,10 @@ export class PostsService {
       );
   }
 
+  deletePost(key: string) {
+    return this.http.delete(this.API_URL + `posts/${key}.json`);
+  }
+
   deleteAllPosts() {
     return this.http.delete(this.API_URL + "posts.json");
   }
