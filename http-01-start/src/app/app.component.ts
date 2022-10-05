@@ -9,7 +9,7 @@ import { Post } from "./post.model";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit {
-  loadedPosts = [];
+  loadedPosts: Post[] = [];
   API_URL = "https://ornate-veld-185723-default-rtdb.firebaseio.com/";
 
   constructor(private http: HttpClient) {}
@@ -48,6 +48,6 @@ export class AppComponent implements OnInit {
           return postsArray;
         })
       )
-      .subscribe((posts) => console.log(posts));
+      .subscribe((posts) => (this.loadedPosts = posts));
   }
 }
