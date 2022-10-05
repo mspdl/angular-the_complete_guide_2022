@@ -11,6 +11,7 @@ import { Post } from "./post.model";
 export class AppComponent implements OnInit {
   loadedPosts: Post[] = [];
   API_URL = "https://ornate-veld-185723-default-rtdb.firebaseio.com/";
+  isLoading = false;
 
   constructor(private http: HttpClient) {}
 
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit {
   }
 
   private fetchPosts() {
+    this.isLoading = true;
     this.http
       .get<{ [key: string]: Post }>(this.API_URL + "posts.json")
       .pipe(
@@ -48,6 +50,9 @@ export class AppComponent implements OnInit {
           return postsArray;
         })
       )
-      .subscribe((posts) => (this.loadedPosts = posts));
+      .subscribe((posts) => {
+        this.isLoading = false;
+        this.loadedPosts = posts;
+      });
   }
 }

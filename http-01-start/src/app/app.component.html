@@ -50,14 +50,19 @@
   </div>
   <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
-      <ul *ngIf="loadedPosts.length > 0; else no_posts" class="list-group">
-        <li *ngFor="let post of loadedPosts" class="list-group-item">
-          <h3>{{ post.title }}</h3>
-          <p>{{ post.content }}</p>
-        </li>
-      </ul>
-      <ng-template #no_posts>
-        <p>No posts available!</p>
+      <div *ngIf="!isLoading; else is_loading">
+        <ul *ngIf="loadedPosts.length > 0; else no_posts" class="list-group">
+          <li *ngFor="let post of loadedPosts" class="list-group-item">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.content }}</p>
+          </li>
+        </ul>
+        <ng-template #no_posts>
+          <p>No posts available!</p>
+        </ng-template>
+      </div>
+      <ng-template #is_loading>
+        <p>Loading...</p>
       </ng-template>
     </div>
   </div>
