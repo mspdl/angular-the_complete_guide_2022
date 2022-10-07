@@ -50,7 +50,7 @@
   </div>
   <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
-      <div *ngIf="!isLoading; else is_loading">
+      <div *ngIf="!isLoading && !error; else is_loading">
         <ul *ngIf="loadedPosts.length > 0; else no_posts" class="list-group">
           <li
             *ngFor="let post of loadedPosts"
@@ -60,7 +60,10 @@
               <h3>{{ post.title }}</h3>
               <p>{{ post.content }}</p>
             </div>
-            <button class="btn btn-danger delete-button" (click)="onDeletePost(post.id)">
+            <button
+              class="btn btn-danger delete-button"
+              (click)="onDeletePost(post.id)"
+            >
               Delete
             </button>
           </li>
@@ -70,7 +73,13 @@
         </ng-template>
       </div>
       <ng-template #is_loading>
-        <p>Loading...</p>
+        <div class="alert alert-danger" *ngIf="error; else still_loading">
+          <h1>An Error Occured</h1>
+          <p>{{ error }}</p>
+        </div>
+        <ng-template #still_loading>
+          <p>Loading...</p>
+        </ng-template>
       </ng-template>
     </div>
   </div>
