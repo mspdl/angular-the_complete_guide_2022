@@ -75,7 +75,14 @@
       <ng-template #is_loading>
         <div class="alert alert-danger" *ngIf="error; else still_loading">
           <h1>An Error Occured</h1>
-          <p>{{ error }}</p>
+          <p>{{ error.message }}</p>
+          <button
+            class="btn btn-primary"
+            (click)="showMoreErrorDetails = !showMoreErrorDetails"
+          >
+            {{ showMoreErrorDetails ? "Show less detail" : "Show more detail" }}
+          </button>
+          <pre *ngIf="showMoreErrorDetails">{{error | json}}</pre>
         </div>
         <ng-template #still_loading>
           <p>Loading...</p>

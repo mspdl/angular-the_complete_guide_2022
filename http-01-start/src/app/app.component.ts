@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   loadedPosts: Post[] = [];
   isLoading = false;
   error = null;
+  showMoreErrorDetails = false;
 
   constructor(private postsService: PostsService) {}
 
@@ -22,8 +23,7 @@ export class AppComponent implements OnInit {
         this.loadedPosts = posts;
       },
       (error) => {
-        this.error = error.message;
-        console.log(error);
+        this.error = error;
       }
     );
   }
@@ -40,8 +40,7 @@ export class AppComponent implements OnInit {
         this.loadedPosts = posts;
       },
       (error) => {
-        this.error = error.message;
-        console.log(error);
+        this.error = error;
       }
     );
   }
