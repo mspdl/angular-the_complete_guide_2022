@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
 import { Post } from "./post.model";
 import { PostsService } from "./posts.service";
 
@@ -7,15 +8,20 @@ import { PostsService } from "./posts.service";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   loadedPosts: Post[] = [];
   isLoading = false;
   error = null;
   showMoreErrorDetails = false;
+  private errorSub: Subscription;
 
   constructor(private postsService: PostsService) {}
 
   ngOnInit(): void {
+    this.errorSub = this.postsService.error.subscribe((errorMessage) => {
+      this.error = errorMessage;
+    });
+
     this.isLoading = true;
     this.postsService.fetchPosts().subscribe(
       (posts) => {
@@ -59,5 +65,9 @@ export class AppComponent implements OnInit {
       this.isLoading = false;
       this.loadedPosts = this.loadedPosts.filter((post) => post.id !== id);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.errorSub.unsubscribe();
   }
 }
