@@ -19,3 +19,9 @@
 .delete-button {
   max-height: 50px;
 }
+
+.btn-error-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}

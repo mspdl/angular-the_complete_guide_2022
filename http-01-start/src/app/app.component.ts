@@ -29,6 +29,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.loadedPosts = posts;
       },
       (error) => {
+        this.isLoading = false;
         this.error = error;
       }
     );
@@ -46,6 +47,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.loadedPosts = posts;
       },
       (error) => {
+        this.isLoading = false;
         this.error = error;
       }
     );
@@ -65,6 +67,10 @@ export class AppComponent implements OnInit, OnDestroy {
       this.isLoading = false;
       this.loadedPosts = this.loadedPosts.filter((post) => post.id !== id);
     });
+  }
+
+  onHandleError(){
+    this.error = null;
   }
 
   ngOnDestroy(): void {
