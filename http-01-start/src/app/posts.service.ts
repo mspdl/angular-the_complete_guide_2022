@@ -42,6 +42,7 @@ export class PostsService {
       .get<{ [key: string]: Post }>(this.API_URL + "posts.json", {
         headers: new HttpHeaders({ "Custom-Header": "Hello" }),
         params: searchParams,
+        responseType: 'json'
       })
       .pipe(
         map((responseData) => {
@@ -69,6 +70,7 @@ export class PostsService {
     return this.http
       .delete(this.API_URL + "posts.json", {
         observe: "events",
+        responseType: "text",
       })
       .pipe(
         tap((event) => {
