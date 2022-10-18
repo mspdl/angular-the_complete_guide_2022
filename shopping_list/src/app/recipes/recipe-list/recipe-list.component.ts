@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Recipe } from '../recipe.model';
-import { RecipeService } from '../recipe.services';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-list',
