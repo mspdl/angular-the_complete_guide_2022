@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import { AuthInterceptorService } from "./auth-interceptor.service";
+import { LoggingInterceptorService } from "./logging-interceptor.service";
 import { PostsService } from "./posts.service";
 
 @NgModule({
@@ -11,6 +12,11 @@ import { PostsService } from "./posts.service";
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [
     PostsService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoggingInterceptorService,
+      multi: true,
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
