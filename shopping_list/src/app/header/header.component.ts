@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { DataStorageService } from '../shared/data-storage.service';
 
@@ -10,9 +9,13 @@ import { DataStorageService } from '../shared/data-storage.service';
 export class HeaderComponent {
   collapsed = true;
 
-  constructor(private dataStorageService: DataStorageService){}
+  constructor(private dataStorageService: DataStorageService) {}
 
-  onSaveData(){
+  onSaveData() {
     this.dataStorageService.storeRecipes();
+  }
+
+  onFetchData() {
+    this.dataStorageService.fetchRecipes();
   }
 }
