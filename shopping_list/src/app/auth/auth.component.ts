@@ -9,6 +9,8 @@ import { AuthService } from './auth.service';
 })
 export class AuthComponent {
   isLoggedIn = true;
+  isLoading = false;
+  error: string = null;
 
   constructor(private authService: AuthService) {}
 
@@ -23,16 +25,20 @@ export class AuthComponent {
     const email = form.value.email;
     const password = form.value.password;
 
+    this.isLoading = true;
     if (this.isLoggedIn) {
     } else {
-      this.authService.signup(email, password).subscribe({
-        next(response) {
-          console.log(response);
+      this.authService.signup(email, password).subscribe(
+        (response) => {
+          console.log('response', response);
+          this.isLoading = false;
         },
-        error(error) {
-          console.error(error);
-        },
-      });
+        (error) => {
+          console.error('error', error);
+          this.error = 'An error occurred';
+          this.isLoading = false;
+        }
+      );
     }
 
     form.reset();
