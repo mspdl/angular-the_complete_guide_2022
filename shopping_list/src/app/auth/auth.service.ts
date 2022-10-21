@@ -14,7 +14,7 @@ interface AuthResponseData {
 })
 export class AuthService {
   API_KEY = 'AIzaSyBSQGFOYDkCxN_UVLTeCRHfQQT3MRFSRj0';
-  API_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[${this.API_KEY}]`;
+  API_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${this.API_KEY}`;
 
   constructor(private http: HttpClient) {}
 
