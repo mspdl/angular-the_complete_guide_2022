@@ -35,7 +35,8 @@ export class AuthService {
           } else {
             switch (errorResponse.error.error.message) {
               case 'EMAIL_EXISTS':
-                errorMessage = 'This email already exists.';
+                errorMessage =
+                  'The email address is already in use by another account.';
             }
           }
           return throwError(errorMessage);
