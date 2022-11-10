@@ -7,13 +7,8 @@ import { AppComponent } from './app.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { AuthComponent } from './auth/auth.component';
 import { HeaderComponent } from './header/header.component';
-import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
-import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
-import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
-import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
-import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeService } from './recipes/recipe.service';
-import { RecipesComponent } from './recipes/recipes.component';
+import { RecipesModule } from './recipes/recipes.module';
 import { AlertComponent } from './shared/alert/alert.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { LoadSpinnerComponent } from './shared/load-spinner/load-spinner.component';
@@ -27,14 +22,8 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
     AppComponent,
     HeaderComponent,
     ShoppingListComponent,
-    RecipesComponent,
-    RecipeListComponent,
-    RecipeDetailComponent,
-    RecipeItemComponent,
     ShoppingEditComponent,
     DropdownDirective,
-    RecipeStartComponent,
-    RecipeEditComponent,
     AuthComponent,
     LoadSpinnerComponent,
     AlertComponent,
@@ -46,6 +35,7 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RecipesModule,
   ],
   providers: [
     RecipeService,
