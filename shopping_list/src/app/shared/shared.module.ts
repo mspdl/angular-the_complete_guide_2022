@@ -6,19 +6,19 @@ import { LoadSpinnerComponent } from './load-spinner/load-spinner.component';
 import { PlaceholderDirective } from './placeholder/placeholder.directive';
 
 @NgModule({
-  imports: [CommonModule],
   declarations: [
     AlertComponent,
     LoadSpinnerComponent,
     PlaceholderDirective,
     DropdownDirective,
   ],
+  imports: [CommonModule],
   exports: [
     AlertComponent,
     LoadSpinnerComponent,
     PlaceholderDirective,
     DropdownDirective,
-    CommonModule
+    CommonModule,
   ],
 })
 export class SharedModule {}
