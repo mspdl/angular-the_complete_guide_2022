@@ -13,6 +13,7 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
       useClass: AuthInterceptorService,
       multi: true,
     },
+    // LoggingService,
   ],
 })
 export class CoreModule {}

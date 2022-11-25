@@ -20,5 +20,6 @@ import { PlaceholderDirective } from './placeholder/placeholder.directive';
     DropdownDirective,
     CommonModule,
   ],
+  // providers: [LoggingService],
 })
 export class SharedModule {}
