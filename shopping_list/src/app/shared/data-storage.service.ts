@@ -29,12 +29,14 @@ export class DataStorageService {
   fetchRecipes() {
     return this.http.get<Recipe[]>(this.API_URL + '/recipes.json').pipe(
       map((recipes) => {
-        return recipes.map((recipe) => {
-          return {
-            ...recipe,
-            ingredients: recipe.ingredients ? recipe.ingredients : [],
-          };
-        });
+        return !recipes
+          ? ([] as Recipe[])
+          : recipes.map((recipe) => {
+              return {
+                ...recipe,
+                ingredients: recipe.ingredients ? recipe.ingredients : [],
+              };
+            });
       }),
       tap((recipes) => {
         this.recipeService.setRecipes(recipes);

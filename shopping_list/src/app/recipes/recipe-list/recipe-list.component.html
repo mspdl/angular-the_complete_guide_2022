@@ -6,11 +6,16 @@
 <hr />
 <div class="row">
   <div class="col-xs-12">
-    <app-recipe-item
-      *ngFor="let recipe of recipes; let id = index"
-      [recipeItem]="recipe"
-      [id]="id"
-    ></app-recipe-item>
+    <ng-container *ngIf="recipes?.length > 0; else emptyRecipeList">
+      <app-recipe-item
+        *ngFor="let recipe of recipes; let id = index"
+        [recipeItem]="recipe"
+        [id]="id"
+      ></app-recipe-item>
+    </ng-container>
+    <ng-template #emptyRecipeList
+      >There is no recipe on the list please add a new one.</ng-template
+    >
     <hr class="separator" />
   </div>
 </div>
