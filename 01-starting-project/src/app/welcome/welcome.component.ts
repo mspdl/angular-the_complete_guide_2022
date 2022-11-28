@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-welcome',
-  templateUrl: './welcome.component.html'
+  // imports: [DetailsComponent],
+  selector: "app-welcome",
+  templateUrl: "./welcome.component.html",
 })
 export class WelcomeComponent {}
