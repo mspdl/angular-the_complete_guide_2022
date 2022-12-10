@@ -94,5 +94,7 @@
       }
     }
   },
-  "defaultProject": "shopping_list"
+  "cli": {
+    "analytics": false
+  }
 }
