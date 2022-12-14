@@ -4,7 +4,7 @@
     <hr />
     <ul
       class="list-group"
-      *ngIf="(ingredients | async).length > 0; else no_content"
+      *ngIf="(ingredients | async).ingredients?.length > 0; else no_content"
     >
       <a
         class="list-group-item"
