@@ -13,8 +13,8 @@ import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer
   declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
+    AppRoutingModule,
     StoreModule.forRoot({ shoppingList: shoppingListReducer }),
     SharedModule,
     CoreModule,
