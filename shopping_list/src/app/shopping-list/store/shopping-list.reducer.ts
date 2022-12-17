@@ -33,7 +33,12 @@ export function shoppingListReducer(
         ingredients: updatedIngredients,
       };
     case ShoppingListActions.DELETE_INGREDIENT:
-      return null;
+      return {
+        ...state,
+        ingredients: state.ingredients.filter((ingredient, index) => {
+          return index !== action.payload;
+        }),
+      };
     default:
       return state;
   }
