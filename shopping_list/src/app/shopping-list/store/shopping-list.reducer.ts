@@ -51,6 +51,18 @@ export function shoppingListReducer(
           return index !== action.payload;
         }),
       };
+    case ShoppingListActions.START_EDIT:
+      return {
+        ...state,
+        editIngredientIndex: action.paylod,
+        editIngredient: state.ingredients[action.paylod],
+      };
+    case ShoppingListActions.STOP_EDIT:
+      return {
+        ...state,
+        editedIngredient: null,
+        editedInredientIndex: -1,
+      };
     default:
       return state;
   }
