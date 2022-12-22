@@ -1,10 +1,10 @@
 import { User } from '../user.model';
 
-export interface State {
+export interface UserState {
   user: User;
 }
 
-const initialState: State = {
+const initialState: UserState = {
   user: null,
 };
 
