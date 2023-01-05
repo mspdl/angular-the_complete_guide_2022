@@ -8,11 +8,11 @@ import {
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AlertComponent } from '../shared/alert/alert.component';
 import { PlaceholderDirective } from '../shared/placeholder/placeholder.directive';
 import * as fromApp from '../store/app.reducer';
-import { AuthResponseData, AuthService } from './auth.service';
+import { AuthService } from './auth.service';
 import * as AuthActions from './store/auth.actions';
 
 @Component({
@@ -56,13 +56,10 @@ export class AuthComponent implements OnInit, OnDestroy {
     const email = form.value.email;
     const password = form.value.password;
 
-    let authObs: Observable<AuthResponseData>;
-
-    this.isLoading = true;
     if (this.isLoggedIn) {
       this.store.dispatch(new AuthActions.LoginStart({ email, password }));
     } else {
-      authObs = this.authService.signup(email, password);
+      this.store.dispatch(new AuthActions.SignupStart({ email, password }));
     }
 
     form.reset();
