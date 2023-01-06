@@ -1,9 +1,7 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import * as fromApp from '../store/app.reducer';
 import * as AuthActions from './store/auth.actions';
@@ -27,41 +25,7 @@ export class AuthService {
 
   private tokenExperirationTimer: any;
 
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-    private store: Store<fromApp.AppState>
-  ) {}
-
-  signup(email: string, password: string) {
-    return this.http
-      .post<AuthResponseData>(this.API_URL_SIGN_UP, {
-        email,
-        password,
-        returnSecureToken: true,
-      })
-      .pipe(
-        catchError(this.handleError),
-        tap((responseData) => {
-          this.handleAuthentication(responseData);
-        })
-      );
-  }
-
-  login(email: string, password: string) {
-    return this.http
-      .post<AuthResponseData>(this.API_URL_SIGN_IN, {
-        email,
-        password,
-        returnSecureToken: true,
-      })
-      .pipe(
-        catchError(this.handleError),
-        tap((responseData) => {
-          this.handleAuthentication(responseData);
-        })
-      );
-  }
+  constructor(private store: Store<fromApp.AppState>) {}
 
   autoLogin() {
     const userData: {
@@ -98,7 +62,6 @@ export class AuthService {
 
   logout() {
     this.store.dispatch(new AuthActions.Logout());
-    this.router.navigate(['/auth']);
     localStorage.removeItem('userData');
     if (this.tokenExperirationTimer) {
       clearTimeout(this.tokenExperirationTimer);
