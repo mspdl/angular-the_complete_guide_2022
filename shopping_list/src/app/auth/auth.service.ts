@@ -11,7 +11,7 @@ export class AuthService {
   API_URL_SIGN_UP = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebaseAPIKey}`;
   API_URL_SIGN_IN = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.firebaseAPIKey}`;
 
-  private tokenExperirationTimer: NodeJS.Timeout;
+  private tokenExperirationTimer: any;
 
   constructor(private store: Store<fromApp.AppState>) {}
 
