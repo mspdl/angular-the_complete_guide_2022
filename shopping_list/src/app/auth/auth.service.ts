@@ -4,15 +4,6 @@ import { environment } from 'src/environments/environment';
 import * as fromApp from '../store/app.reducer';
 import * as AuthActions from './store/auth.actions';
 
-export interface AuthResponseData {
-  idToken: string;
-  email: string;
-  refreshToken: string;
-  expiresIn: string;
-  localId: string;
-  registered?: boolean;
-}
-
 @Injectable({
   providedIn: 'root',
 })
