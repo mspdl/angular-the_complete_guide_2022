@@ -73,15 +73,13 @@ const handleError = (errorResponse: any) => {
 
 @Injectable()
 export class AuthEffects {
-  API_URL_SIGN_UP = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebaseAPIKey}`;
-  API_URL_SIGN_IN = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.firebaseAPIKey}`;
 
   authSignup = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.SIGNUP_START),
       switchMap((signupAction: AuthActions.SignupStart) => {
         return this.http
-          .post<AuthResponseData>(this.API_URL_SIGN_UP, {
+          .post<AuthResponseData>(environment.API_URL_SIGN_UP, {
             email: signupAction.payload.email,
             password: signupAction.payload.password,
             returnSecureToken: true,
@@ -113,7 +111,7 @@ export class AuthEffects {
       ofType(AuthActions.LOGIN_START),
       switchMap((authData: AuthActions.LoginStart) => {
         return this.http
-          .post<AuthResponseData>(this.API_URL_SIGN_IN, {
+          .post<AuthResponseData>(environment.API_URL_SIGN_IN, {
             email: authData.payload.email,
             password: authData.payload.password,
             returnSecureToken: true,
