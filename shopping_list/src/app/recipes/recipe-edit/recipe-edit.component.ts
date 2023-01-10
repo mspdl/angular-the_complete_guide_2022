@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormArray,
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { map } from 'rxjs';
+import * as fromApp from '../../store/app.reducer';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -18,7 +26,8 @@ export class RecipeEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private recipeService: RecipeService,
-    private router: Router
+    private router: Router,
+    private store: Store<fromApp.AppState>
   ) {}
 
   ngOnInit(): void {
@@ -36,29 +45,45 @@ export class RecipeEditComponent implements OnInit {
     let recipeIngredients = new UntypedFormArray([]);
 
     if (this.editMode) {
-      const recipe = this.recipeService.getRecipeById(this.recipeId);
-      recipeName = recipe.name;
-      recipeImagePatch = recipe.imagePath;
-      recipeDescription = recipe.description;
-      if (recipe['ingredients']) {
-        recipe.ingredients.forEach((ingredient) => {
-          recipeIngredients.push(
-            new UntypedFormGroup({
-              name: new UntypedFormControl(ingredient.name, Validators.required),
-              amount: new UntypedFormControl(ingredient.amount, [
-                Validators.required,
-                Validators.pattern(this.ONLY_POSITIVE_NUMBERS),
-              ]),
-            })
-          );
+      this.store
+        .select('recipes')
+        .pipe(
+          map((recipeState) => {
+            return recipeState.recipes.find((recipe, index) => {
+              return index === this.recipeId;
+            });
+          })
+        )
+        .subscribe((recipe) => {
+          recipeName = recipe.name;
+          recipeImagePatch = recipe.imagePath;
+          recipeDescription = recipe.description;
+          if (recipe['ingredients']) {
+            recipe.ingredients.forEach((ingredient) => {
+              recipeIngredients.push(
+                new UntypedFormGroup({
+                  name: new UntypedFormControl(
+                    ingredient.name,
+                    Validators.required
+                  ),
+                  amount: new UntypedFormControl(ingredient.amount, [
+                    Validators.required,
+                    Validators.pattern(this.ONLY_POSITIVE_NUMBERS),
+                  ]),
+                })
+              );
+            });
+          }
         });
-      }
     }
 
     this.recipeForm = new UntypedFormGroup({
       name: new UntypedFormControl(recipeName, Validators.required),
       imagePath: new UntypedFormControl(recipeImagePatch, Validators.required),
-      description: new UntypedFormControl(recipeDescription, Validators.required),
+      description: new UntypedFormControl(
+        recipeDescription,
+        Validators.required
+      ),
       ingredients: recipeIngredients,
     });
   }
