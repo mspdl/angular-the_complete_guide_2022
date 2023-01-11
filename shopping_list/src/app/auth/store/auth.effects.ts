@@ -73,7 +73,6 @@ const handleError = (errorResponse: any) => {
 
 @Injectable()
 export class AuthEffects {
-
   authSignup = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.SIGNUP_START),
