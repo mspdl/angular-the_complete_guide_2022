@@ -8,7 +8,7 @@ export const CLEAR_ERROR = '[Auth] Clear Error';
 export const AUTO_LOGIN = '[Auth] Auto Login';
 export const LOGOUT = '[Auth] Logout';
 
-export class AuthenticateSucess implements Action {
+export class AuthenticateSuccess implements Action {
   readonly type = AUTHENTICATE_SUCCESS;
 
   constructor(
@@ -17,6 +17,7 @@ export class AuthenticateSucess implements Action {
       userId: string;
       token: string;
       expirationDate: Date;
+      redirect: boolean;
     }
   ) {}
 }
@@ -50,7 +51,7 @@ export class AutoLogin implements Action {
 
 export type AuthActions =
   | LoginStart
-  | AuthenticateSucess
+  | AuthenticateSuccess
   | AuthenticateFail
   | SignupStart
   | ClearError

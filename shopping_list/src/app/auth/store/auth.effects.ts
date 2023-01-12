@@ -29,11 +29,12 @@ const handleAuthentication = (
   );
   const user = new User(email, userId, token, expirationDate);
   localStorage.setItem('userData', JSON.stringify(user));
-  return new AuthActions.AuthenticateSucess({
+  return new AuthActions.AuthenticateSuccess({
     email,
     userId,
     token,
     expirationDate,
+    redirect: true,
   });
 };
 
@@ -141,8 +142,10 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(AuthActions.AUTHENTICATE_SUCCESS),
-        tap(() => {
-          this.router.navigate(['/']);
+        tap((authSuccessAction: AuthActions.AuthenticateSuccess) => {
+          if (authSuccessAction.payload.redirect) {
+            this.router.navigate(['/']);
+          }
         })
       ),
     { dispatch: false }
@@ -172,11 +175,12 @@ export class AuthEffects {
             new Date(userData._tokenExperiationDate).getTime() -
             new Date().getTime();
           this.authService.setLogoutTimer(expirationDuration);
-          return new AuthActions.AuthenticateSucess({
+          return new AuthActions.AuthenticateSuccess({
             email: loadedUser.email,
             userId: loadedUser.id,
             token: loadedUser.token,
             expirationDate: new Date(userData._tokenExperiationDate),
+            redirect: false,
           });
         }
         return { type: 'DUMMY' };
