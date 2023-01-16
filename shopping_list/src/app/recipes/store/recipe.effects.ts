@@ -12,7 +12,7 @@ import * as RecipesActions from './recipe.actions';
 export class RecipeEffects {
   fetchRecipes = createEffect(() =>
     this.actions$.pipe(
-      ofType(RecipesActions.FETCH_RECIPES),
+      ofType(RecipesActions.fetchRecipes),
       switchMap(() => {
         return this.http.get<Recipe[]>(environment.API_URL + '/recipes.json');
       }),
@@ -27,7 +27,7 @@ export class RecipeEffects {
             });
       }),
       map((recipes) => {
-        return new RecipesActions.SetRecipes(recipes);
+        return RecipesActions.setRecipes({ recipes });
       })
     )
   );
@@ -35,7 +35,7 @@ export class RecipeEffects {
   storeRecipes = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(RecipesActions.STORE_RECIPES),
+        ofType(RecipesActions.storeRecipes),
         withLatestFrom(this.store.select('recipes')),
         switchMap(([actionData, recipesState]) => {
           return this.http.put(

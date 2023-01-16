@@ -4,9 +4,9 @@ import * as fromRecipes from '../recipes/store/recipe.reducer';
 import * as fromShoppingList from '../shopping-list/store/shopping-list.reducer';
 
 export interface AppState {
-  shoppingList: fromShoppingList.ShoppingListState;
-  auth: fromAuth.UserState;
-  recipes: fromRecipes.RecipeState;
+  shoppingList: fromShoppingList.State;
+  auth: fromAuth.State;
+  recipes: fromRecipes.State;
 }
 
 export const appReducer: ActionReducerMap<AppState> = {

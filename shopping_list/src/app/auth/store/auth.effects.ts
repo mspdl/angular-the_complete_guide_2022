@@ -29,7 +29,7 @@ const handleAuthentication = (
   );
   const user = new User(email, userId, token, expirationDate);
   localStorage.setItem('userData', JSON.stringify(user));
-  return new AuthActions.AuthenticateSuccess({
+  return AuthActions.authenticateSuccess({
     email,
     userId,
     token,
@@ -41,7 +41,7 @@ const handleAuthentication = (
 const handleError = (errorResponse: any) => {
   let errorMessage = 'An error occurred';
   if (!errorResponse.error || !errorResponse.error.error) {
-    return of(new AuthActions.AuthenticateFail(errorMessage));
+    return of(AuthActions.authenticateFail({ errorMessage }));
   } else {
     switch (errorResponse.error.error.message) {
       case 'EMAIL_EXISTS':
@@ -69,19 +69,19 @@ const handleError = (errorResponse: any) => {
         break;
     }
   }
-  return of(new AuthActions.AuthenticateFail(errorMessage));
+  return of(AuthActions.authenticateFail({ errorMessage }));
 };
 
 @Injectable()
 export class AuthEffects {
   authSignup = createEffect(() =>
     this.actions$.pipe(
-      ofType(AuthActions.SIGNUP_START),
-      switchMap((signupAction: AuthActions.SignupStart) => {
+      ofType(AuthActions.signupStart),
+      switchMap((signupAction) => {
         return this.http
           .post<AuthResponseData>(environment.API_URL_SIGN_UP, {
-            email: signupAction.payload.email,
-            password: signupAction.payload.password,
+            email: signupAction.email,
+            password: signupAction.password,
             returnSecureToken: true,
           })
           .pipe(
@@ -108,12 +108,12 @@ export class AuthEffects {
 
   authLogin = createEffect(() =>
     this.actions$.pipe(
-      ofType(AuthActions.LOGIN_START),
-      switchMap((authData: AuthActions.LoginStart) => {
+      ofType(AuthActions.loginStart),
+      switchMap((authData) => {
         return this.http
           .post<AuthResponseData>(environment.API_URL_SIGN_IN, {
-            email: authData.payload.email,
-            password: authData.payload.password,
+            email: authData.email,
+            password: authData.password,
             returnSecureToken: true,
           })
           .pipe(
@@ -141,19 +141,15 @@ export class AuthEffects {
   authRedirect = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(AuthActions.AUTHENTICATE_SUCCESS),
-        tap((authSuccessAction: AuthActions.AuthenticateSuccess) => {
-          if (authSuccessAction.payload.redirect) {
-            this.router.navigate(['/']);
-          }
-        })
+        ofType(AuthActions.authenticateSuccess),
+        tap((action) => action.redirect && this.router.navigate(['/']))
       ),
     { dispatch: false }
   );
 
   autoLogin = createEffect(() =>
     this.actions$.pipe(
-      ofType(AuthActions.AUTO_LOGIN),
+      ofType(AuthActions.autoLogin),
       map(() => {
         const userData: {
           email: string;
@@ -175,7 +171,7 @@ export class AuthEffects {
             new Date(userData._tokenExperiationDate).getTime() -
             new Date().getTime();
           this.authService.setLogoutTimer(expirationDuration);
-          return new AuthActions.AuthenticateSuccess({
+          return AuthActions.authenticateSuccess({
             email: loadedUser.email,
             userId: loadedUser.id,
             token: loadedUser.token,
@@ -191,7 +187,7 @@ export class AuthEffects {
   authLogout = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(AuthActions.LOGOUT),
+        ofType(AuthActions.logout),
         tap(() => {
           this.authService.clearLogoutTimer();
           localStorage.removeItem('userData');
