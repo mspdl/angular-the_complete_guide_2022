@@ -1,31 +1,42 @@
 import { state, style, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 
+enum AnimationStates {
+  Normal = 'normal',
+  Highlighted = 'highlighted',
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   animations: [
     trigger('divState', [
       state(
-        'normal',
+        AnimationStates.Normal,
         style({ backgroundColor: 'red', transform: 'translateX(0)' })
       ),
       state(
-        'highlighted',
-        style({ backgroudColor: 'blue', transform: 'translateX(100px)' })
+        AnimationStates.Highlighted,
+        style({ backgroundColor: 'blue', transform: 'translateX(100px)' })
       ),
     ]),
   ],
 })
 export class AppComponent {
-  state = 'normal';
-  list = ['Milk', 'Sugar', 'Bread'];
+  state = AnimationStates.Normal;
+  foods = ['Milk', 'Sugar', 'Bread'];
+
+  onAnimate() {
+    this.state === AnimationStates.Normal
+      ? (this.state = AnimationStates.Highlighted)
+      : (this.state = AnimationStates.Normal);
+  }
 
   onAdd(item: any) {
-    this.list.push(item);
+    this.foods.push(item);
   }
 
   onDelete(item: any) {
-    this.list.splice(this.list.indexOf(item), 1);
+    this.foods.splice(this.foods.indexOf(item), 1);
   }
 }
