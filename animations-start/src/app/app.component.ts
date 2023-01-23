@@ -1,4 +1,10 @@
-import { state, style, trigger } from '@angular/animations';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { Component } from '@angular/core';
 
 enum AnimationStates {
@@ -18,6 +24,14 @@ enum AnimationStates {
       state(
         AnimationStates.Highlighted,
         style({ backgroundColor: 'blue', transform: 'translateX(100px)' })
+      ),
+      transition(
+        `${AnimationStates.Normal} => ${AnimationStates.Highlighted}`,
+        animate(300)
+      ),
+      transition(
+        `${AnimationStates.Highlighted} => ${AnimationStates.Normal}`,
+        animate(800)
       ),
     ]),
   ],
