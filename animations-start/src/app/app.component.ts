@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
 enum AnimationStates {
   Normal = 'normal',
   Highlighted = 'highlighted',
+  Shrunker = 'shrunker',
 }
 
 @Component({
@@ -26,6 +27,30 @@ enum AnimationStates {
         style({ backgroundColor: 'blue', transform: 'translateX(100px)' })
       ),
       transition(
+        `${AnimationStates.Normal} <=> ${AnimationStates.Highlighted}`,
+        animate(300)
+      ),
+    ]),
+    trigger('wildState', [
+      state(
+        AnimationStates.Normal,
+        style({ backgroundColor: 'red', transform: 'translateX(0) scale(1)' })
+      ),
+      state(
+        AnimationStates.Highlighted,
+        style({
+          backgroundColor: 'blue',
+          transform: 'translateX(100px) scale(1)',
+        })
+      ),
+      state(
+        AnimationStates.Shrunker,
+        style({
+          backgroundColor: 'green',
+          transform: 'translateX(0px) scale(0.5)',
+        })
+      ),
+      transition(
         `${AnimationStates.Normal} => ${AnimationStates.Highlighted}`,
         animate(300)
       ),
@@ -33,17 +58,26 @@ enum AnimationStates {
         `${AnimationStates.Highlighted} => ${AnimationStates.Normal}`,
         animate(800)
       ),
+      transition(`${AnimationStates.Shrunker} <=> *`, animate(500)),
     ]),
   ],
 })
 export class AppComponent {
   state = AnimationStates.Normal;
+  wildState = AnimationStates.Normal;
   foods = ['Milk', 'Sugar', 'Bread'];
 
   onAnimate() {
     this.state === AnimationStates.Normal
       ? (this.state = AnimationStates.Highlighted)
       : (this.state = AnimationStates.Normal);
+    this.wildState === AnimationStates.Normal
+      ? (this.wildState = AnimationStates.Highlighted)
+      : (this.wildState = AnimationStates.Normal);
+  }
+
+  onShrink() {
+    this.wildState = AnimationStates.Shrunker;
   }
 
   onAdd(item: any) {
