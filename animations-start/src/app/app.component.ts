@@ -58,7 +58,11 @@ enum AnimationStates {
         `${AnimationStates.Highlighted} => ${AnimationStates.Normal}`,
         animate(800)
       ),
-      transition(`${AnimationStates.Shrunker} <=> *`, animate(500)),
+      transition(`${AnimationStates.Shrunker} <=> *`, [
+        style({ backgroundColor: 'orange', borderRadius: '0' }),
+        animate(1000, style({ borderRadius: '50px' })),
+        animate(500),
+      ]),
     ]),
   ],
 })
