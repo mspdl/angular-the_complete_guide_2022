@@ -11,6 +11,8 @@ enum AnimationStates {
   Normal = 'normal',
   Highlighted = 'highlighted',
   Shrunker = 'shrunker',
+  In = 'in',
+  Void = 'void',
 }
 
 @Component({
@@ -62,6 +64,19 @@ enum AnimationStates {
         style({ backgroundColor: 'orange', borderRadius: '0' }),
         animate(1000, style({ borderRadius: '50px' })),
         animate(500),
+      ]),
+    ]),
+    trigger('list1', [
+      state(
+        AnimationStates.In,
+        style({ opacity: 1, transform: 'translateX(0)' })
+      ),
+      transition(`${AnimationStates.Void} => *`, [
+        style({ opacity: 0, transform: 'translateX(-100px)' }),
+        animate(300),
+      ]),
+      transition(`* => ${AnimationStates.Void}`, [
+        animate(500, style({ opacity: 0, transform: 'translateX(100px)' })),
       ]),
     ]),
   ],
