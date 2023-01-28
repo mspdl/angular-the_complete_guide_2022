@@ -37,6 +37,7 @@
         <li
           class="list-group-item"
           (click)="onDelete(food)"
+          [@list2]
           *ngFor="let food of foods"
         >
           {{ food }}
