@@ -147,4 +147,12 @@ export class AppComponent {
   onDelete(item: any) {
     this.foods.splice(this.foods.indexOf(item), 1);
   }
+
+  animationStarted(event: any) {
+    console.log('animationStarted', event);
+  }
+
+  animationFinished(event: any) {
+    console.log('animationFinished', event);
+  }
 }
