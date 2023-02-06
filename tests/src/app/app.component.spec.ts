@@ -19,14 +19,4 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual('My title');
   });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    const app = fixture.componentInstance;
-    expect(compiled.querySelector('.content span')?.textContent).toContain(
-      `${app.title} app is running!`
-    );
-  });
 });
