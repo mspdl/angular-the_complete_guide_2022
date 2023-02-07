@@ -1,14 +1,15 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
+import { DataService } from '../shared/data.service';
 import { UserComponent } from './user.component';
 import { UserService } from './user.service';
 
 describe('UserComponent', () => {
-  beforeEach(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [UserComponent],
-    });
-  });
-
+      declarations: [UserComponent]
+    }).compileComponents();
+  }));
+ 
   it('should create the app', () => {
     let fixture = TestBed.createComponent(UserComponent);
     let app = fixture.debugElement.componentInstance;
@@ -42,4 +43,20 @@ describe('UserComponent', () => {
       app.user.name
     );
   });
+
+  it("shouldn't fetch data successfully if not called asynchronously", () => {
+    let fixture = TestBed.createComponent(UserComponent);
+    let app = fixture.debugElement.componentInstance;
+    fixture.detectChanges();
+    expect(app.data).toBe(undefined);
+  });
+
+  it('should fetch data successfully if not called asynchronously', waitForAsync(() => {
+    let fixture = TestBed.createComponent(UserComponent);
+    let app = fixture.debugElement.componentInstance;
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(app.data).toBe("Data");
+    });
+  }));
 });
