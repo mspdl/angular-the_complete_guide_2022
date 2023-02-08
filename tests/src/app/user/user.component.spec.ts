@@ -1,4 +1,4 @@
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { DataService } from '../shared/data.service';
 import { UserComponent } from './user.component';
 import { UserService } from './user.service';
@@ -6,10 +6,10 @@ import { UserService } from './user.service';
 describe('UserComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [UserComponent]
-    }).compileComponents();
+      declarations: [UserComponent],
+    });
   }));
- 
+
   it('should create the app', () => {
     let fixture = TestBed.createComponent(UserComponent);
     let app = fixture.debugElement.componentInstance;
@@ -56,7 +56,17 @@ describe('UserComponent', () => {
     let app = fixture.debugElement.componentInstance;
     fixture.detectChanges();
     fixture.whenStable().then(() => {
-      expect(app.data).toBe("Data");
+      expect(app.data).toBe('Data');
     });
+  }));
+
+  it('should fetch data successfully if not called asynchronously', fakeAsync(() => {
+    const fixture = TestBed.createComponent(UserComponent);
+    const app = fixture.debugElement.componentInstance;
+    const dataService = fixture.debugElement.injector.get(DataService);
+    spyOn(dataService, 'getDetails').and.returnValue(Promise.resolve('Data'));
+    fixture.detectChanges();
+    tick();
+    expect(app.data).toBe('Data');
   }));
 });
