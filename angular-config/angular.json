@@ -108,6 +108,16 @@
               "src/**/*.html"
             ]
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "angular-config:build:production",
+            "firebaseProject": "ng-course-recipe-book-bbf68",
+            "firebaseHostingSite": "ng-course-recipe-book-bbf68"
+          }
         }
       }
     }

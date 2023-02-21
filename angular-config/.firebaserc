@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ng-course-recipe-book-bbf68": {
+      "hosting": {
+        "angular-config": [
+          "ng-course-recipe-book-bbf68"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ng-course-recipe-book-bbf68"
+  }
+}
