@@ -16,5 +16,34 @@ userName = "Morgan";
 let isInstructor: boolean;
 isInstructor = true;
 
-let hobbies: null;
-// hobbies = 12; not possible
+let nullable: null;
+// nullable = 12; not possible
+
+// More complex types
+
+let hobbies: string[];
+hobbies = ["Games", "Animes"];
+
+let person: {
+  name: string;
+  age: number;
+};
+person = {
+  name: "Morgan",
+  age: 33,
+};
+
+let people: {
+  name: string;
+  age: number;
+}[] = [];
+people.push(
+  {
+    name: "Morgan",
+    age: 33,
+  },
+  {
+    name: "John",
+    age: 99,
+  }
+);
