@@ -47,3 +47,7 @@ people.push(
     age: 99,
   }
 );
+
+// Type inference
+let course = 'React - The Complete Guide'
+// course = 12341; = not possible
