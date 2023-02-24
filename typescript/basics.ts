@@ -49,5 +49,8 @@ people.push(
 );
 
 // Type inference
-let course = 'React - The Complete Guide'
-// course = 12341; = not possible
+let courseExample = "React - The Complete Guide";
+// courseExample = 12341; = not possible
+
+let course: string | number = "React - The Complete Guide";
+course = 12341;
