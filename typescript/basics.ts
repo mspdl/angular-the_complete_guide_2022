@@ -29,7 +29,7 @@ type Person = {
   age: number;
 };
 
-let person: Person; 
+let person: Person;
 
 person = {
   name: "Morgan",
@@ -54,3 +54,13 @@ let courseExample = "React - The Complete Guide";
 
 let course: string | number = "React - The Complete Guide";
 course = 12341;
+
+// Functions & types
+
+function add(a: number, b: number): number {
+  return a + b;
+}
+
+function printValue(value: any): void {
+  console.log(value);
+}
