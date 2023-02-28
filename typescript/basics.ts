@@ -75,6 +75,37 @@ function insertAtBeginning<T>(array: T[], value: T) {
 const demoArray = [1, 2, 3];
 
 const updatedArray = insertAtBeginning(demoArray, -1); // [-1, 1, 2, 3]
-const stringArray = insertAtBeginning(['a', 'b', 'c'], 'd');
+const stringArray = insertAtBeginning(["a", "b", "c"], "d");
 
-stringArray[0].split('');
+stringArray[0].split("");
+
+class Student {
+  // firstName: string;
+  // lastName: string;
+  // age: number;
+  // private courses: string[];
+
+  constructor(
+    public firstName: string,
+    public lastName: string,
+    public age: number,
+    private courses: string[] = []
+  ) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    this.courses = courses;
+  }
+
+  getCourses(): string[] {
+    return this.courses;
+  }
+
+  enrol(courseName: string): void {
+    this.courses.push(courseName);
+  }
+}
+
+const morgan = new Student("morgan", "espindola", 33);
+morgan.enrol("ReactJS");
+console.log(morgan.getCourses()); // ["ReactJS"]
