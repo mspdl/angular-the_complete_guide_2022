@@ -109,3 +109,26 @@ class Student {
 const morgan = new Student("morgan", "espindola", 33);
 morgan.enrol("ReactJS");
 console.log(morgan.getCourses()); // ["ReactJS"]
+
+interface Human {
+  firstName: string;
+  age: number;
+
+  greet: () => void;
+}
+
+let john: Human;
+john = {
+  firstName: "John",
+  age: 99,
+  greet() {
+    console.log("Hello, my name is " + this.firstName);
+  },
+};
+
+class Instructor implements Human {
+  firstName: string;
+  age: number;
+  greet: () => void;
+  
+}
